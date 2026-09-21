@@ -1,0 +1,250 @@
+/* Thebes house palette: papyrus cream + lapis blue by day, night blue by
+   dark. Serif for display, mono for the technical voice.
+
+   Theme resolution, in precedence order:
+     1. :root[data-theme="light"|"dark"]  — an explicit choice (useTheme)
+     2. prefers-color-scheme              — the operating system
+     3. the light values below            — the fallback
+   Every colour below is a variable, so the Memphis strip and anything you
+   add inherit the theme for free — never hardcode a hex in a rule. */
+
+:root {
+  --bg: #f4f0df;
+  --card: #fffdf8;
+  --ink: #26384c;
+  --muted: #657184;
+  --blue: #245a91;
+  --line: #e8e0c9;
+  --flag: #8d9caf;
+  --shadow: rgba(75, 64, 38, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, serif;
+}
+
+.shell {
+  width: min(760px, calc(100% - 28px));
+  margin: 36px auto;
+}
+
+.hero {
+  text-align: center;
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 34px;
+}
+
+.hero p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.notebook {
+  font-size: 34px;
+  color: var(--flag);
+}
+
+#theme-toggle {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  border: 0;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  background: var(--card);
+  color: var(--blue);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 18px;
+  margin: 14px 0;
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+.section-label {
+  color: var(--blue);
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+#todo-form {
+  display: flex;
+  gap: 10px;
+}
+
+#todo-input {
+  flex: 1;
+  border: 1px solid var(--line);
+  background:  var(--card);
+  color: var(--ink);
+  padding: 11px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+button {
+  border: 0;
+  border-radius: 4px;
+  background: var(--blue);
+  color: white;
+  padding: 10px 18px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--blue);
+}
+
+.todo.completed span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.todo small {
+  color: var(--muted);
+}
+
+#todo-summary {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+.btn-pin,.btn-del {
+  border: none;
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn-pin { background: var(--blue); color: white; }
+.btn-del { background: var(--blue); color: white; opacity: 0.9; }
+.btn-del:hover { background: var(--blue); }
+
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 100;
+}
+.modal[hidden] { display: none!important; }
+.modal-content {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 24px;
+  border-radius: 16px;
+  min-width: 320px;
+  text-align: center;
+}
+.modal-content input {
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin: 12px 0;
+  text-align: center;
+}
+.modal-actions { display: flex; justify-content: center; gap: 12px; }
+.btn-cancel { background: #dd0707; border:none; padding:8px 16px; border-radius:12px; cursor:pointer; }
+.btn-save { background: #02ca16; color:rgb(248, 241, 241); border:none; padding:8px 16px; border-radius:12px; cursor:pointer; }
+
+#error {
+  background: #ffe4e0;
+  color: #dd2525;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 24px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #172333;
+    --card: #213247;
+    --ink: #f4f0df;
+    --muted: #b7c0ce;
+    --blue: #76a9dc;
+    --line: #40536a;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f0df;
+  --card: #fffdf8;
+  --ink: #26384c;
+  --muted: #657184;
+  --blue: #245a91;
+  --line: #e8e0c9;
+}
+
+:root[data-theme="dark"] {
+  --bg: #172333;
+  --card: #213247;
+  --ink: #f4f0df;
+  --muted: #b7c0ce;
+  --blue: #76a9dc;
+  --line: #40536a;
+}

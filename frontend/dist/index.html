@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='85'%3E%E2%98%A5%3C/text%3E%3C/svg%3E" />
+    <title>session1 · on Thebes</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell">
+  <header class="hero">
+    <button id="theme-toggle" aria-label="Toggle theme">☾</button>
+
+    <div class="notebook">📓</div>
+    <h1>session1</h1>
+    <p>A Todo List, live On The Thebes Substrate</p>
+  </header>
+
+  <section class="card">
+    <div class="section-label">
+      ADD — AN UPDATE, ORDERED BY CONSENSUS
+    </div>
+
+    <form id="todo-form">
+      <input
+        id="todo-input"
+        type="text"
+        placeholder="what needs doing?"
+        autocomplete="off"
+      />
+
+      <button id="add-button" type="submit">
+        Add Note
+      </button>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="section-label">
+      LIST — A QUERY, ANSWERED LOCALLY
+    </div>
+
+    <ul id="todo-list"></ul>
+
+    <p id="todo-summary"></p>
+  </section>
+
+  <p id="error" hidden></p>
+
+  <div id="edit-modal" class="modal" hidden>
+  <div class="modal-content">
+    <h3>Edit Note</h3>
+    <input id="edit-input" type="text" />
+    <div class="modal-actions">
+      <button id="cancel-edit" class="btn-cancel">Cancel</button>
+      <button id="save-edit" class="btn-save">Save</button>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    served from the chain · post-quantum certified · Thebes
+  </footer>
+
+  <script src="./app.js"></script>
+</main>
+
+  </body>
+</html>
